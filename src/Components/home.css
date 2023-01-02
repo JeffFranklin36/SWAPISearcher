@@ -1,0 +1,20 @@
+.homepage {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ height: 80vh;
+}
+
+.picture {
+ width: 45%;
+ order: -1;
+}
+
+.bio {
+ width: 45%;
+}
+
+img {
+ width: 100%;
+ height: auto;
+}

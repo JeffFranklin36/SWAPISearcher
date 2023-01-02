@@ -1,0 +1,16 @@
+.grid-container {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ grid-gap: 20px;
+}
+
+.card {
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ align-items: center;
+ padding: 20px;
+ background-color: white;
+ border-radius: 5px;
+ border: 1px solid black;
+}
