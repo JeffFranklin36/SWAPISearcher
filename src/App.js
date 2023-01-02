@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Navbar from './Components/Navbar';
+import NavBar from './Components/NavBar';
 import Homepage from './Components/Homepage';
 import PlanetSearch from './Components/PlanetSearch';
 import PeopleSearch from './Components/PeopleSearch';
@@ -13,7 +13,7 @@ function App() {
     <div className='App'>
       <Router>
       <div className='display'>
-        <Navbar />
+        <NavBar />
           <Routes>
             <Route exact path="/" element={<Homepage/>} />
             <Route exact path="/planets" element={<PlanetSearch/>}/>
