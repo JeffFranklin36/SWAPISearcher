@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Card } from 'react-bootstrap';
 
 const SpeciesSearch = () => {
   const [query, setQuery] = useState('');
@@ -39,12 +40,16 @@ const SpeciesSearch = () => {
       </form>
       <div className="grid-container">
         {results.slice(0, 9).map(result => (
-          <div key={result.name} className="card">
-            <h2>{result.name}</h2>
+          <Card key={result.name} className="card">
+            <Card.Body>
+              <Card.Title>{result.name}</Card.Title>
+              <Card.Text>
             <p>Classification: {result.classification}</p>
             <p>Designation: {result.designation}</p>
             <p>Language: {result.language}</p>
-          </div>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         ))}
       </div>
     </div>

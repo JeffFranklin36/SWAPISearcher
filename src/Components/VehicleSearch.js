@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { Card } from 'react-bootstrap';
 
 const VehicleSearch = () => {
   const [query, setQuery] = useState('');
@@ -39,13 +40,17 @@ const VehicleSearch = () => {
       </form>
       <div className="grid-container">
         {results.slice(0, 9).map(result => (
-          <div key={result.name} className="card">
-            <h2>{result.name}</h2>
-            <p>Manufacturer: {result.manufacturer}</p>
-            <p>Model: {result.model}</p>
-            <p>Cost: {result.cost_in_credits} Credits</p>
-            <p>Capacity: {result.crew} crewmen & {result.passengers} passengers</p>
-          </div>
+          <Card key={result.name} className="card">
+            <Card.Body>
+            <Card.Title>{result.name}</Card.Title>
+              <Card.Text>
+                <p>Manufacturer: {result.manufacturer}</p>
+                <p>Model: {result.model}</p>
+                <p>Cost: {result.cost_in_credits} Credits</p>
+                <p>Capacity: {result.crew} crewmen & {result.passengers} passengers</p>
+              </Card.Text>
+            </Card.Body>
+          </Card>
         ))}
       </div>
     </div>

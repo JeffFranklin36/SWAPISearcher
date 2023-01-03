@@ -1,19 +1,20 @@
 .grid-container {
- margin-top: 10px;
+ margin: 10px;
  display: grid;
  grid-template-columns: repeat(3, 1fr);
  grid-gap: 20px;
 }
 
-.card {
+.grid-container .card {
  display: flex;
  flex-direction: column;
  justify-content: space-between;
  align-items: center;
- padding: 20px;
- background-color: white;
- border-radius: 5px;
- border: 1px solid black;
+ padding: 10px;
+ background-color: #212529;
+ border: 2px solid #ffd52d;
+ color: #9b9d97;
+ height: 25vh;
 }
 
 .box{
@@ -23,10 +24,11 @@
 
 .input {
  padding: 10px;
- width: 60vw;
+ width: 50vw;
+ display: inline-block;
+ vertical-align: top;
  height: 50px;
  background: #212529; ;
- border: 2px solid #212529;
  border-radius: 50px;
  box-sizing: border-box;
  font-size: 26px;
@@ -35,9 +37,9 @@
 }
 .button {
  background: #ffd52d;
- border: 2px solid #ffd52d;
- right: 250px;
- position: fixed;
+ display: inline-block;
+ vertical-align: top;
+ border: 2px solid #212529;
  width: 15vw;
  height: 50px;
  border-radius: 50px;
