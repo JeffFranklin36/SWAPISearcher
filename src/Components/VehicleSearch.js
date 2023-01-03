@@ -15,20 +15,28 @@ const VehicleSearch = () => {
       });
   }, [query]);
 
+  const handleSearch = (event) => {
+    event.preventDefault();
+    // Submit form and fetch search results
+  };
+
   return (
     <div>
-     <div className='box'>
-      <form className='search'>
-        <input
-          type="text"
-          id="query"
-          className='input'
-          value={query}
-          onChange={event => setQuery(event.target.value)}
-        />
+      <form className='search' onSubmit={handleSearch}>
+        <div className='box'>
+          <input
+            type="text"
+            id="query"
+            placeholder='Search Vehicles'
+            className='input'
+            value={query}
+            onChange={event => setQuery(event.target.value)}
+          />
+          <button type="submit" className="button">
+            <FontAwesomeIcon icon={faSearch} />
+          </button>
+        </div>
       </form>
-      <FontAwesomeIcon className="icon" icon={faSearch} />
-      </div>
       <div className="grid-container">
         {results.slice(0, 9).map(result => (
           <div key={result.name} className="card">
