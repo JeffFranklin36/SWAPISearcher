@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './results.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const PlanetSearch = () => {
   const [query, setQuery] = useState('');
@@ -15,15 +17,18 @@ const PlanetSearch = () => {
 
   return (
     <div>
-      <form>
-        <label htmlFor="query">Search:</label>
+     <div className='box'>
+      <form className='search'>
         <input
           type="text"
           id="query"
+          className='input'
           value={query}
           onChange={event => setQuery(event.target.value)}
         />
       </form>
+      <FontAwesomeIcon className="icon" icon={faSearch} />
+      </div>
       <div className="grid-container">
         {results.slice(0, 9).map(result => (
           <div key={result.name} className="card">
