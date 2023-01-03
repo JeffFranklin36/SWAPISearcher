@@ -14,3 +14,41 @@
  border-radius: 5px;
  border: 1px solid black;
 }
+
+.box{
+ position: relative;
+}
+
+.input {
+ padding: 10px;
+ width: 80px;
+ height: 80px;
+ background: none;
+ border: 4px solid #ffd52d;
+ border-radius: 50px;
+ box-sizing: border-box;
+ font-size: 26px;
+ color: #ffd52d;
+ outline: none;
+ transition: .5s;
+}
+.box:hover input{
+ width: 100vw;
+ background: #212529;
+ border-radius: 0px;
+ border-top: 2px solid #ffd52d;
+}
+.box .icon{
+ position: absolute;
+ top: 50%;
+ left: 40px;
+ transform: translate(-50%,-50%);
+ font-size: 26px;
+ color: #ffd52d;
+ transition: .2s;
+}
+.box:hover .icon{
+ opacity: 0;
+ z-index: -1;
+}
+

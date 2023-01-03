@@ -1,3 +1,13 @@
+.navbar {
+ display: flex;
+ margin-bottom: 0px;
+ position: fixed;
+ top: 0;
+ left: 0;
+ right: 0;
+ border-bottom: 2px solid #ffd52d;
+}
+
 /* .navbar {
  display: flex;
  justify-content: space-between;
