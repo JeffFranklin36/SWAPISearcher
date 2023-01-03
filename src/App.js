@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './app.css'
 import NavBar from './Components/NavBar';
 import Homepage from './Components/Homepage';
 import PlanetSearch from './Components/PlanetSearch';
@@ -7,6 +8,7 @@ import PeopleSearch from './Components/PeopleSearch';
 import SpeciesSearch from './Components/SpeciesSearch';
 import StarshipSearch from './Components/StarshipSearch';
 import VehicleSearch from './Components/VehicleSearch';
+
 
 function App() {
   return (
