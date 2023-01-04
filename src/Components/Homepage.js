@@ -5,7 +5,7 @@ import logo from '../images/CocoJeff.jpg'
 const Homepage = () => (
  <div className="homepage">
    <div className="picture">
-     <img src={logo} alt="Me and my Dog Coco" />
+     <img src={logo} alt="Me and my Dog Coco" className='profile'/>
    </div>
    <div className="bio">
      <p>

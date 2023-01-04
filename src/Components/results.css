@@ -5,6 +5,13 @@
  grid-gap: 20px;
 }
 
+@media (max-width: 992px) {
+ .grid-container {
+   display: flex;
+   flex-direction: column;
+ }
+}
+
 .grid-container .card {
  display: flex;
  flex-direction: column;

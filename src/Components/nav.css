@@ -1,9 +1,15 @@
 .navbar {
- display: flex;
+ /* display: flex; */
  margin-bottom: 10px;
- position: fixed;
+ /* position: fixed; */
  border-bottom: 2px solid #ffd52d;
+ /* justify-content: space-between;
  top: 0;
  left: 0;
- right: 0;
+ right: 0; */
 }
+
+img {
+ width: 100px;
+}
+
