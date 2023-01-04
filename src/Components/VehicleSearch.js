@@ -21,7 +21,7 @@ const VehicleSearch = () => {
   };
 
   return (
-    <div>
+    <div className='body'>
       <form className='search' onSubmit={handleSearch}>
         <div className='box'>
           <input

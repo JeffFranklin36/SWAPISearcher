@@ -9,7 +9,6 @@ import SpeciesSearch from './Components/SpeciesSearch';
 import StarshipSearch from './Components/StarshipSearch';
 import VehicleSearch from './Components/VehicleSearch';
 
-
 function App() {
   return (
     <div className='App'>
@@ -29,7 +28,6 @@ function App() {
     </div>
   )
 }
-
 
 export default App;
 
