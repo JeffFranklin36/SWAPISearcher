@@ -1,24 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import './results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Card } from 'react-bootstrap';
+import logo from '../images/notFound.webp'
 
 const VehicleSearch = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
+  const [searched, setSearched] = useState(false);
 
-  useEffect(() => {
+  const handleSearch = (event) => {
+    event.preventDefault();
     fetch(`https://swapi.dev/api/vehicles?search=${query}`)
       .then(response => response.json())
       .then(data => {
         setResults(data.results);
+        setSearched(true);
       });
-  }, [query]);
-
-  const handleSearch = (event) => {
-    event.preventDefault();
-    // Submit form and fetch search results
   };
 
   return (
@@ -38,21 +37,27 @@ const VehicleSearch = () => {
           </button>
         </div>
       </form>
-      <div className="grid-container">
-        {results.slice(0, 9).map(result => (
-          <Card key={result.name} className="card">
-            <Card.Body>
-            <Card.Title>{result.name}</Card.Title>
-              <Card.Text>
-                <p>Manufacturer: {result.manufacturer}</p>
-                <p>Model: {result.model}</p>
-                <p>Cost: {result.cost_in_credits} Credits</p>
-                <p>Capacity: {result.crew} crewmen & {result.passengers} passengers</p>
-              </Card.Text>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
+      {searched && results.length === 0 ? (
+          <div className='notFound'>
+           <img src={logo} alt="No Results Found" />
+          </div>
+      ) : (
+          <div className="grid-container">
+            {results.slice(0, 9).map(result => (
+              <Card key={result.name} className="card">
+                <Card.Body>
+                <Card.Title>{result.name}</Card.Title>
+                  <Card.Text>
+                    <p>Manufacturer: {result.manufacturer}</p>
+                    <p>Model: {result.model}</p>
+                    <p>Cost: {result.cost_in_credits} Credits</p>
+                    <p>Capacity: {result.crew} crewmen & {result.passengers} passengers</p>
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+    )}
     </div>
   );
 }
