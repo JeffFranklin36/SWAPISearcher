@@ -30,7 +30,6 @@ const PlanetSearch = () => {
       });
   };
   
-  
   const handlePagination = () => {
     console.log(`Page: ${page}`);
     handleSearch();
@@ -40,7 +39,6 @@ const PlanetSearch = () => {
     handlePagination();
   }, [page]);
   
-
   return (
     <Container>
       <Row>
