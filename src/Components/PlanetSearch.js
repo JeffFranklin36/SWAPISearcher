@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
-import logo from '../images/notFound.webp'
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col, Card } from 'react-bootstrap';
+import NoResults from './NoResults';
+import Pagination from './Pagination';
 
 const PlanetSearch = () => {
   const [query, setQuery] = useState('');
@@ -29,7 +30,6 @@ const PlanetSearch = () => {
       });
   };
   
-  
   const handlePagination = () => {
     console.log(`Page: ${page}`);
     handleSearch();
@@ -39,7 +39,6 @@ const PlanetSearch = () => {
     handlePagination();
   }, [page]);
   
-
   return (
     <Container>
       <Row>
@@ -62,17 +61,7 @@ const PlanetSearch = () => {
         </Col>
       </Row>
       {searched && results.length === 0 ? (
-        <Row>
-          <Col xs={12} md={4}  className='notFound'>
-            <Card className='w-100 h-100'>
-                <Card.Img className='w-100 h-100' variant="top" src={logo} alt="No Results Found" />
-                  <Card.Body>
-                    <Card.Title>No Results Found</Card.Title>
-                    <Card.Text>Please try again with a different search term.</Card.Text>
-                  </Card.Body>
-              </Card>
-          </Col>
-        </Row>
+        <NoResults/>
     ) : (
       <Row>
         {results.map(result => (
@@ -90,29 +79,11 @@ const PlanetSearch = () => {
         ))}
       </Row>
       )}
-    {searched && results.length > 0 && totalPages > 1 && (
-    <Row className='justify-content-center'>
-      <Col xs={12} md={4}>
-        <button
-          type="button"
-          disabled={page === 1}
-          onClick={() => setPage(page - 1)}
-          className="button w-50"
-        ><FontAwesomeIcon icon={faChevronLeft} />
-        </button>
-        <button
-          type="button"
-          disabled={page === totalPages}
-          onClick={() => setPage(page + 1)}
-          className="button w-50"
-        ><FontAwesomeIcon icon={faChevronRight} />
-        </button>
-      </Col>
-    </Row>
-  )}
+      {searched && results.length > 0 && totalPages > 1 && (
+        <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
+      )}
     </Container>
   );
 }
 
 export default PlanetSearch;
-
