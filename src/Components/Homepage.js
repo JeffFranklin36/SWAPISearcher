@@ -1,5 +1,5 @@
 import React from 'react';
-import './home.css'
+import '../Components/styles/home.css'
 import logo from '../images/CocoJeff.jpg'
 
 const Homepage = () => (

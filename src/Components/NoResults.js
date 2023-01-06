@@ -1,5 +1,5 @@
 import { Row, Col, Card } from 'react-bootstrap';
-import './results.css'
+import '../Components/styles/results.css'
 import logo from '../images/notFound.webp'
 
 const NoResults = () => { 

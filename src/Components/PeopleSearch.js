@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import './results.css';
+//react features and axios
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
+
+//styling
+import '../Components/styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+
+//external components
 import NoResults from './NoResults';
 import Pagination from './Pagination';
+import PeopleResults from './PeopleResults';
 
 const PeopleSearch = () => {
   const [query, setQuery] = useState('');
@@ -14,7 +20,7 @@ const PeopleSearch = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
 
-  const handleSearch = (event) => {
+  const handleSearch = useCallback((event) => {
     if (event) {
       event.preventDefault();
     }
@@ -28,16 +34,12 @@ const PeopleSearch = () => {
       .catch(error => {
         console.error(error);
       });
-  };
- 
-  const handlePagination = () => {
-    console.log(`Page: ${page}`);
-    handleSearch();
-  };
+  }, [query, page]);
   
+ 
   useEffect(() => {
-    handlePagination();
-  }, [page]);
+    handleSearch();
+  }, [handleSearch, page]);
 
   return (
     <Container>
@@ -60,27 +62,9 @@ const PeopleSearch = () => {
           </form>
         </Col>
       </Row>
-      {searched && results.length === 0 ? (
-        <NoResults/>
-  ) : (
-        <Row>
-          {results.map(result => (
-            <Col className='container' xs={12} md={4} key={result.name}>
-              <Card className="card">
-                <Card.Body>
-                  <Card.Title>{result.name}</Card.Title>
-                  <Card.Text>
-                    <p>Gender: {result.gender}</p>
-                    <p>Weight: {result.mass} Kilograms</p>
-                    <p>Height: {result.height} Meters</p>
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
-      )}
-      {searched && results.length > 0 && totalPages > 1 && (
+      {searched && results && <PeopleResults results={results} />}
+      {searched && !results.length && <NoResults results={results}/>}
+      {searched && results && totalPages > 1 && (
         <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
       )}
     </Container>

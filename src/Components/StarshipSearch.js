@@ -1,11 +1,17 @@
-import React, { useState, useEffect } from 'react';
+//react features and axios
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import './results.css'
+
+//styling
+import '../Components/styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
+
+//external components
 import NoResults from './NoResults';
 import Pagination from './Pagination';
+import StarshipResults from './StarshipResults';
 
 const StarshipSearch = () => {
   const [query, setQuery] = useState('');
@@ -14,7 +20,7 @@ const StarshipSearch = () => {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
 
-  const handleSearch = (event) => {
+  const handleSearch = useCallback((event) => {
     if (event) {
       event.preventDefault();
     }
@@ -28,16 +34,12 @@ const StarshipSearch = () => {
       .catch(error => {
         console.error(error);
       });
-  };
+  }, [query, page]);
   
-  const handlePagination = () => {
-    console.log(`Page: ${page}`);
-    handleSearch();
-  };
-  
+
   useEffect(() => {
-    handlePagination();
-  }, [page]);
+    handleSearch();
+  }, [handleSearch, page]);
 
   return (
     <Container>
@@ -60,30 +62,11 @@ const StarshipSearch = () => {
           </form>
         </Col>
       </Row>
-      {searched && results.length === 0 ? (
-        <NoResults/>
-         ) : (
-          <Row>
-            {results.map(result => (
-              <Col className='container' xs={12} md={4} key={result.name}>
-                <Card key={result.name} className="card">
-                  <Card.Body>
-                    <Card.Title>{result.name}</Card.Title>
-                    <Card.Text>
-                      <p>Manufacturer: {result.manufacturer}</p>
-                      <p>Model: {result.model}</p>
-                      <p>Cost: {result.cost_in_credits} Credits</p>
-                      <p>Capacity: {result.crew} crewmen & {result.passengers} passengers</p>
-                    </Card.Text>
-                  </Card.Body>
-                </Card>
-              </Col>
-            ))}
-          </Row>
-        )}
-        {searched && results.length > 0 && totalPages > 1 && (
-          <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
-        )}
+      {searched && results && <StarshipResults results={results} />}
+      {searched && !results.length && <NoResults results={results}/>}
+      {searched && results && totalPages > 1 && (
+        <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
+      )}
     </Container>
   );
 };
