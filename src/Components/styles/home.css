@@ -1,4 +1,4 @@
-.homepage {
+/* .homepage {
  display: flex;
  justify-content: space-between;
  align-items: center;
@@ -21,5 +21,42 @@
  margin-left: 70px;
  width: 90%;
  height: 70vh;
- /* box-shadow:0px 3px 2px 0 #212529;; */
+ box-shadow:0px 3px 2px 0 #212529;;
+} */
+
+.banner {
+ margin: 10px;
 }
+
+.carousel,
+.carousel .carousel-item,
+.carousel .carousel-item .card {
+  height: 60vh;
+  align-items: center;
+}
+
+.cardimg {
+ height: 80%;
+}
+
+.carouselbutton {
+ background: #ffd52d;
+ color: #212529; 
+ border: 2px solid #ffd52d ;
+ height: 30px;
+ width: 100px;
+ border-radius: 30px;
+ transition: box-shadow .3s;
+}
+
+.carouselbutton:active {
+ box-shadow: 0 0 0 3px rgba(255, 213, 45, 0.5);
+}
+
+
+
+
+
+
+
+
