@@ -1,7 +1,10 @@
+import { Suspense } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
+import SpinnerWheel from './SpinnerWheel';
 
 function PlanetResults({results}) {
   return (
+    <Suspense fallback={<SpinnerWheel/>}>
    <Row>
    {results.map(result => (
      <Col className='container' xs={12} md={4} key={result.name}>
@@ -19,6 +22,7 @@ function PlanetResults({results}) {
      </Col>
     ))}
    </Row>
+   </Suspense>
   );
 }
 

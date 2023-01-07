@@ -2,14 +2,14 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import '../Components/styles/nav.css'
-import logo from '../images/logo.png'
+import logo from '../images/SwapiLogo.png'
 
 function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand className='brand' href="/">
-          <img src={logo} alt="crossed lightsabers"/>
+          <img src={logo} alt="SwapiSearcher"/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
