@@ -7,6 +7,7 @@ import '../Components/styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
+import banner from '../images/SwapiBanner.png'
 
 //external components
 import NoResults from './NoResults';
@@ -43,6 +44,9 @@ const VehicleSearch = () => {
 
   return (
     <Container>
+      <Row className='banner'>
+        <img src={banner} alt=""/>
+      </Row>
       <Row>
         <Col xs={12} md={4} className='w-100'>
           <form className='search' onSubmit={event => handleSearch(event)}>

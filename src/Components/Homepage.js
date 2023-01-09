@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Components/styles/home.css'
-import logo from '../images/SwapiBanner.png'
+import banner from '../images/SwapiBanner.png'
 import { Container, Row, Col } from 'react-bootstrap';
 import HomeCarousel from './HomeCarousel';
 
@@ -8,7 +8,7 @@ const Homepage = () => {
     return(
       <Container>
         <Row className='banner'>
-        <img src={logo} alt=""/>
+        <img src={banner} alt=""/>
         </Row>
         <Row>
           <HomeCarousel />
