@@ -8,6 +8,8 @@ import PeopleSearch from './Components/PeopleSearch';
 import SpeciesSearch from './Components/SpeciesSearch';
 import StarshipSearch from './Components/StarshipSearch';
 import VehicleSearch from './Components/VehicleSearch';
+import AddResults from './Components/AddResults';
+import PlanetForm from './Components/PlanetForm';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
             <Route exact path="/species" element={<SpeciesSearch/>}/>
             <Route exact path="/starships" element={<StarshipSearch/>}/>
             <Route exact path="/vehicles" element={<VehicleSearch/>}/>
+            <Route exact path="/addResults" element={<AddResults/>}/>
+            <Route exact path="/planetForm" element={<PlanetForm/>}/>
           </Routes>
       </div>
       </Router>
