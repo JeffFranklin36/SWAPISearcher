@@ -10,6 +10,10 @@ import StarshipSearch from './Components/StarshipSearch';
 import VehicleSearch from './Components/VehicleSearch';
 import AddResults from './Components/AddResults';
 import PlanetForm from './Components/PlanetForm';
+import PeopleForm from './Components/PeopleForm';
+import SpeciesForm from './Components/SpeciesForm';
+import StarshipForm from './Components/StarshipForm';
+import VehicleForm from './Components/VehicleForm';
 
 function App() {
   return (
@@ -26,6 +30,10 @@ function App() {
             <Route exact path="/vehicles" element={<VehicleSearch/>}/>
             <Route exact path="/addResults" element={<AddResults/>}/>
             <Route exact path="/planetForm" element={<PlanetForm/>}/>
+            <Route exact path="/peopleForm" element={<PeopleForm/>}/>
+            <Route exact path="/speciesForm" element={<SpeciesForm/>}/>
+            <Route exact path="/starshipForm" element={<StarshipForm/>}/>
+            <Route exact path="/vehicleForm" element={<VehicleForm/>}/>
           </Routes>
       </div>
       </Router>

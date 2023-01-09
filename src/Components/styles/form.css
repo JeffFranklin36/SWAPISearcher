@@ -1,5 +1,6 @@
 .container .card {
- height: 40vh
+ height: 40vh;
+ margin: 10px
 }
 
 .cardbody {
@@ -14,7 +15,7 @@
  height: 100%
 }
 
-.button {
+.formbutton {
  background: #ffd52d;
  display: inline-block;
  vertical-align: top;
@@ -22,8 +23,10 @@
  height: 50px;
  border-radius: 50px;
  transition: box-shadow .3s;
+ margin-top: 10px;
+ width: 100%;
 }
-.button:active {
+.formbutton:active {
  box-shadow: 0 0 0 3px rgba(255, 213, 45, 0.5);
 }
 

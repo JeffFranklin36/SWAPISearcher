@@ -13,7 +13,7 @@ function AddResults() {
   };
 
   return (
-    <Container>
+    <>
       <Row className='banner'>
         <img src={banner} alt=""/>
       </Row>
@@ -24,7 +24,6 @@ function AddResults() {
           <Dropdown.Toggle id="dropdown-basic">
             {selectedOption || 'Select an option'}
           </Dropdown.Toggle>
-
           <Dropdown.Menu>
             {options.map((option) => (
               <Dropdown.Item key={option} eventKey={option}>
@@ -35,9 +34,9 @@ function AddResults() {
                 ) : option === "Species" ? (
                   <Link to="/speciesForm">{option}</Link>
                 ) : option === "Starships" ? (
-                  <Link to="/starshipsForm">{option}</Link>
+                  <Link to="/starshipForm">{option}</Link>
                 ) : option === "Vehicles" ? (
-                  <Link to="/vehiclesForm">{option}</Link>
+                  <Link to="/vehicleForm">{option}</Link>
                 ) : (
                   option
                 )}
@@ -47,7 +46,7 @@ function AddResults() {
         </Dropdown>
       </Form.Group>
       </Row>
-    </Container>
+    </>
   );
 }
 

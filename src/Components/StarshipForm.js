@@ -3,7 +3,7 @@ import { Form, Container, Col, Row, Card } from 'react-bootstrap';
 import '../Components/styles/form.css'
 import AddResults from './AddResults';
 
-const PlanetForm = () => {
+const StarshipForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("successfully submitted")
@@ -21,48 +21,48 @@ const PlanetForm = () => {
               <Form.Control type="text" maxLength={50} />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formClimate">
-              <Form.Label>Climate</Form.Label>
-              <Form.Control type="text" maxLength={50} />
+            <Form.Group as={Col} controlId="formModel">
+              <Form.Label>Model</Form.Label>
+              <Form.Control type="text" maxLength={100} />
             </Form.Group>
           </Row>
 
           <Row>
-            <Form.Group as={Col} controlId="formDiameter">
-              <Form.Label>Diameter</Form.Label>
+            <Form.Group as={Col} controlId="formCrew">
+              <Form.Label>Crew</Form.Label>
               <Form.Control type="number" />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formTerrain">
-              <Form.Label>Terrain</Form.Label>
-              <Form.Control type="text" maxLength={50} />
+            <Form.Group as={Col} controlId="formPassengers">
+              <Form.Label>Passengers</Form.Label>
+              <Form.Control type="number" />
             </Form.Group>
           </Row>
 
           <Row>
-            <Form.Group as={Col} controlId="formOrbitalPeriod">
-              <Form.Label>Orbital Period</Form.Label>
-              <Form.Control type="number" />
+            <Form.Group as={Col} controlId="formManufacturer">
+              <Form.Label>Manufacturer</Form.Label>
+              <Form.Control type="text" maxLength={100} />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formPopulation">
-              <Form.Label>Population</Form.Label>
-              <Form.Control type="number"  />
+            <Form.Group as={Col} controlId="formStarshipClass">
+              <Form.Label>Starship Class</Form.Label>
+              <Form.Control type="text"  maxLength={100}/>
             </Form.Group>
           </Row>
 
           <Row>
-            <Form.Group as={Col} controlId="formRotationPeriod">
-              <Form.Label>Rotation Period</Form.Label>
+            <Form.Group as={Col} controlId="formCargoCapacity">
+              <Form.Label>Cargo Capacity</Form.Label>
               <Form.Control type="number" />
             </Form.Group>
 
-            <Form.Group as={Col} controlId="formSurfaceWater">
-              <Form.Label>Surface Water</Form.Label>
+            <Form.Group as={Col} controlId="formConsumables">
+              <Form.Label>Consumables</Form.Label>
               <Form.Control type="number" />
             </Form.Group>
           </Row>
-          <button className='formbutton' type='submit'>Submit</button>
+           <button className='formbutton' type='submit'>Submit</button>
         </Form>
       </Card.Body>
     </Card>
@@ -70,5 +70,4 @@ const PlanetForm = () => {
   );
 };
 
-export default PlanetForm;
-
+export default StarshipForm;
