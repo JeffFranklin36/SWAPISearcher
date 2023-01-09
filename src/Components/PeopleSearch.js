@@ -7,6 +7,7 @@ import '../Components/styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
+import banner from '../images/SwapiBanner.png'
 
 //external components
 import NoResults from './NoResults';
@@ -24,16 +25,20 @@ const PeopleSearch = () => {
     if (event) {
       event.preventDefault();
     }
-    setPage(page);
-    axios.get(`https://swapi.dev/api/people?search=${query}&page=${page}`)
-      .then(response => {
-        setResults(response.data.results);
-        setTotalPages(Math.ceil(response.data.count / 10));
-        setSearched(true);
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    if(query.length >= -1) {
+      setPage(page);
+      axios.get(`https://swapi.dev/api/people?search=${query}&page=${page}`)
+        .then(response => {
+          setResults(response.data.results);
+          setTotalPages(Math.ceil(response.data.count / 10));
+          setSearched(true);
+        })
+        .catch(error => {
+          console.error(error);
+        });
+        console.log(page)
+        console.log(query.length)
+    }
   }, [query, page]);
   
  
@@ -43,6 +48,9 @@ const PeopleSearch = () => {
 
   return (
     <Container>
+      <Row className='banner'>
+        <img src={banner} alt=""/>
+      </Row>
       <Row>
         <Col xs={12} md={4} className='w-100'>
           <form className='search' onSubmit={event => handleSearch(event)}>
