@@ -1,6 +1,6 @@
 import React from 'react';
 import '../Components/styles/home.css'
-import banner from '../images/SwapiBanner.png'
+import banner from './images/SwapiBanner.png'
 import { Container, Row} from 'react-bootstrap';
 import HomeCarousel from './HomeCarousel';
 
@@ -18,4 +18,3 @@ const Homepage = () => {
 };
 
 export default Homepage;
-

@@ -3,16 +3,16 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 //styling
-import '../Components/styles/results.css'
+import '../styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import banner from '../images/SwapiBanner.png'
 
 //external components
-import NoResults from './NoResults';
-import Pagination from './Pagination';
-import StarshipResults from './StarshipResults';
+import NoResults from '../results/NoResults';
+import Pagination from '../results/Pagination';
+import StarshipResults from '../results/StarshipResults';
 
 const StarshipSearch = () => {
   const [query, setQuery] = useState('');

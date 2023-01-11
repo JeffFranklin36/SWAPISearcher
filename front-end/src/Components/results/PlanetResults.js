@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { Row, Col, Card } from 'react-bootstrap';
-import SpinnerWheel from './SpinnerWheel';
+import SpinnerWheel from '../SpinnerWheel';
 
 function PlanetResults({results}) {
   return (

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Container, Col, Row, Card } from 'react-bootstrap';
-import '../Components/styles/form.css'
-import AddResults from './AddResults';
+import '../styles/form.css'
+import AddResults from '../forms/AddResults';
 
-const VehicleForm = () => {
+const CreateStarship = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("successfully submitted")
@@ -23,7 +23,7 @@ const VehicleForm = () => {
 
             <Form.Group as={Col} controlId="formModel">
               <Form.Label>Model</Form.Label>
-              <Form.Control type="text" maxLength={50} />
+              <Form.Control type="text" maxLength={100} />
             </Form.Group>
           </Row>
 
@@ -47,7 +47,7 @@ const VehicleForm = () => {
 
             <Form.Group as={Col} controlId="formStarshipClass">
               <Form.Label>Starship Class</Form.Label>
-              <Form.Control type="text" maxLength={100} />
+              <Form.Control type="text"  maxLength={100}/>
             </Form.Group>
           </Row>
 
@@ -70,4 +70,4 @@ const VehicleForm = () => {
   );
 };
 
-export default VehicleForm;
+export default CreateStarship;

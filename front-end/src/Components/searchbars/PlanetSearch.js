@@ -3,18 +3,18 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 //styling
-import '../Components/styles/results.css'
+import '../styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import banner from '../images/SwapiBanner.png'
 
 //external components
-import NoResults from './NoResults';
-import Pagination from './Pagination';
-import VehicleResults from './VehicleResults';
+import NoResults from '../results/NoResults';
+import Pagination from '../results/Pagination';
+import PlanetResults from '../results/PlanetResults';
 
-const VehicleSearch = () => {
+const PlanetSearch = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [searched, setSearched] = useState(false);
@@ -26,7 +26,8 @@ const VehicleSearch = () => {
       event.preventDefault();
     }
     setPage(page);
-    axios.get(`https://swapi.dev/api/vehicles?search=${query}&page=${page}`)
+    console.log('searching')
+    axios.get(`https://swapi.dev/api/planets?search=${query}&page=${page}`)
       .then(response => {
         setResults(response.data.results);
         setTotalPages(Math.ceil(response.data.count / 10));
@@ -41,7 +42,7 @@ const VehicleSearch = () => {
   useEffect(() => {
     handleSearch();
   }, [handleSearch, page]);
-
+  
   return (
     <Container>
       <Row className='banner'>
@@ -54,7 +55,7 @@ const VehicleSearch = () => {
               <input
                 type="text"
                 id="query"
-                placeholder='Search Vehicles'
+                placeholder='Search Planets'
                 className='input w-75'
                 value={query}
                 onChange={event => setQuery(event.target.value)}
@@ -66,7 +67,7 @@ const VehicleSearch = () => {
           </form>
         </Col>
       </Row>
-      {searched && results && <VehicleResults results={results} />}
+      {searched && results && <PlanetResults results={results} />}
       {searched && !results.length && <NoResults results={results}/>}
       {searched && results && totalPages > 1 && (
         <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
@@ -75,4 +76,4 @@ const VehicleSearch = () => {
   );
 }
 
-export default VehicleSearch;
+export default PlanetSearch;

@@ -3,18 +3,18 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 //styling
-import '../Components/styles/results.css'
+import '../styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import banner from '../images/SwapiBanner.png'
 
 //external components
-import NoResults from './NoResults';
-import Pagination from './Pagination';
-import PlanetResults from './PlanetResults';
+import NoResults from '../results/NoResults';
+import Pagination from '../results/Pagination';
+import SpeciesResults from '../results/SpeciesResults.js';
 
-const PlanetSearch = () => {
+const SpeciesSearch = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [searched, setSearched] = useState(false);
@@ -26,7 +26,7 @@ const PlanetSearch = () => {
       event.preventDefault();
     }
     setPage(page);
-    axios.get(`https://swapi.dev/api/planets?search=${query}&page=${page}`)
+    axios.get(`https://swapi.dev/api/species?search=${query}&page=${page}`)
       .then(response => {
         setResults(response.data.results);
         setTotalPages(Math.ceil(response.data.count / 10));
@@ -41,7 +41,7 @@ const PlanetSearch = () => {
   useEffect(() => {
     handleSearch();
   }, [handleSearch, page]);
-  
+
   return (
     <Container>
       <Row className='banner'>
@@ -54,7 +54,7 @@ const PlanetSearch = () => {
               <input
                 type="text"
                 id="query"
-                placeholder='Search Planets'
+                placeholder='Search Species'
                 className='input w-75'
                 value={query}
                 onChange={event => setQuery(event.target.value)}
@@ -66,7 +66,7 @@ const PlanetSearch = () => {
           </form>
         </Col>
       </Row>
-      {searched && results && <PlanetResults results={results} />}
+      {searched && results && <SpeciesResults results={results} />}
       {searched && !results.length && <NoResults results={results}/>}
       {searched && results && totalPages > 1 && (
         <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
@@ -75,4 +75,4 @@ const PlanetSearch = () => {
   );
 }
 
-export default PlanetSearch;
+export default SpeciesSearch;

@@ -1,10 +1,10 @@
 import React from 'react';
-import '../Components/styles/home.css'
-import PlanetsBanner from '../images/PlanetsBanner.jpg'
-import PeopleBanner from '../images/PeopleBanner.webp'
-import SpeciesBanner from '../images/SpeciesBanner.jpeg'
-import StarshipBanner from '../images/StarshipBanner.jpg'
-import VehicleBanner from '../images/VehicleBanner.jpg'
+import './styles/home.css'
+import PlanetsBanner from './images/PlanetsBanner.jpg'
+import PeopleBanner from './images/PeopleBanner.webp'
+import SpeciesBanner from './images/SpeciesBanner.jpeg'
+import StarshipBanner from './images/StarshipBanner.jpg'
+import VehicleBanner from './images/VehicleBanner.jpg'
 import  Carousel  from 'react-bootstrap/Carousel';
 import  Card  from 'react-bootstrap/Card';
 import { Link } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import { Row, Col, Card, Container } from 'react-bootstrap';
-import '../Components/styles/results.css'
+import '../styles/results.css'
 import logo from '../images/notFound.webp'
 import { Link } from 'react-router-dom';
 

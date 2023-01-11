@@ -3,18 +3,18 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 //styling
-import '../Components/styles/results.css'
+import '../styles/results.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col } from 'react-bootstrap';
 import banner from '../images/SwapiBanner.png'
 
 //external components
-import NoResults from './NoResults';
-import Pagination from './Pagination';
-import PeopleResults from './PeopleResults';
+import NoResults from '../results/NoResults';
+import Pagination from '../results/Pagination';
+import VehicleResults from '../results/VehicleResults';
 
-const PeopleSearch = () => {
+const VehicleSearch = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [searched, setSearched] = useState(false);
@@ -25,23 +25,19 @@ const PeopleSearch = () => {
     if (event) {
       event.preventDefault();
     }
-    if(query.length >= -1) {
-      setPage(page);
-      axios.get(`https://swapi.dev/api/people?search=${query}&page=${page}`)
-        .then(response => {
-          setResults(response.data.results);
-          setTotalPages(Math.ceil(response.data.count / 10));
-          setSearched(true);
-        })
-        .catch(error => {
-          console.error(error);
-        });
-        console.log(page)
-        console.log(query.length)
-    }
+    setPage(page);
+    axios.get(`https://swapi.dev/api/vehicles?search=${query}&page=${page}`)
+      .then(response => {
+        setResults(response.data.results);
+        setTotalPages(Math.ceil(response.data.count / 10));
+        setSearched(true);
+      })
+      .catch(error => {
+        console.error(error);
+      });
   }, [query, page]);
   
- 
+  
   useEffect(() => {
     handleSearch();
   }, [handleSearch, page]);
@@ -58,7 +54,7 @@ const PeopleSearch = () => {
               <input
                 type="text"
                 id="query"
-                placeholder='Search People'
+                placeholder='Search Vehicles'
                 className='input w-75'
                 value={query}
                 onChange={event => setQuery(event.target.value)}
@@ -70,13 +66,13 @@ const PeopleSearch = () => {
           </form>
         </Col>
       </Row>
-      {searched && results && <PeopleResults results={results} />}
+      {searched && results && <VehicleResults results={results} />}
       {searched && !results.length && <NoResults results={results}/>}
       {searched && results && totalPages > 1 && (
         <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
       )}
     </Container>
   );
-};
+}
 
-  export default PeopleSearch;
+export default VehicleSearch;

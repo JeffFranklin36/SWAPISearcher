@@ -1,19 +1,28 @@
+//react and features
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+//styling
 import './app.css'
+
+// nav and home
 import NavBar from './Components/NavBar';
 import Homepage from './Components/Homepage';
-import PlanetSearch from './Components/PlanetSearch';
-import PeopleSearch from './Components/PeopleSearch';
-import SpeciesSearch from './Components/SpeciesSearch';
-import StarshipSearch from './Components/StarshipSearch';
-import VehicleSearch from './Components/VehicleSearch';
-import AddResults from './Components/AddResults';
-import PlanetForm from './Components/PlanetForm';
-import PeopleForm from './Components/PeopleForm';
-import SpeciesForm from './Components/SpeciesForm';
-import StarshipForm from './Components/StarshipForm';
-import VehicleForm from './Components/VehicleForm';
+
+//searchbars
+import PlanetSearch from './Components/searchbars/PlanetSearch';
+import PeopleSearch from './Components/searchbars/PeopleSearch';
+import SpeciesSearch from './Components/searchbars/SpeciesSearch';
+import StarshipSearch from './Components/searchbars/StarshipSearch';
+import VehicleSearch from './Components/searchbars/VehicleSearch';
+
+//form components
+import AddResults from './Components/forms/AddResults';
+import CreatePerson from './Components/forms/CreatePerson';
+import CreateSpecies from './Components/forms/CreateSpecies';
+import CreateVehicle from './Components/forms/CreateVehicle';
+import CreatePlanet from './Components/forms/CreatePlanet';
+import CreateStarship from './Components/forms/CreateStarship';
 
 function App() {
   return (
@@ -29,11 +38,11 @@ function App() {
             <Route exact path="/starships" element={<StarshipSearch/>}/>
             <Route exact path="/vehicles" element={<VehicleSearch/>}/>
             <Route exact path="/addResults" element={<AddResults/>}/>
-            <Route exact path="/planetForm" element={<PlanetForm/>}/>
-            <Route exact path="/peopleForm" element={<PeopleForm/>}/>
-            <Route exact path="/speciesForm" element={<SpeciesForm/>}/>
-            <Route exact path="/starshipForm" element={<StarshipForm/>}/>
-            <Route exact path="/vehicleForm" element={<VehicleForm/>}/>
+            <Route exact path="/createPlanet" element={<CreatePlanet/>}/>
+            <Route exact path="/createPerson" element={<CreatePerson/>}/>
+            <Route exact path="/createSpecies" element={<CreateSpecies/>}/>
+            <Route exact path="/createStarship" element={<CreateStarship/>}/>
+            <Route exact path="/createVehicle" element={<CreateVehicle/>}/>
           </Routes>
       </div>
       </Router>
