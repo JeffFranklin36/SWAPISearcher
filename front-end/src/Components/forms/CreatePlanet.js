@@ -158,5 +158,3 @@ const CreatePlanet = () => {
 };
 
 export default CreatePlanet;
-
- 
