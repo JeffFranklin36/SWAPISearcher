@@ -20,28 +20,34 @@ const VehicleSearch = () => {
   const [searched, setSearched] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
+  const [searchClicked, setSearchClicked] = useState(false);
 
-  const handleSearch = useCallback((event) => {
+  const handleSearch = useCallback(async (event) => {
     if (event) {
       event.preventDefault();
     }
-    setPage(page);
-    axios.get(`https://swapi.dev/api/vehicles?search=${query}&page=${page}`)
-      .then(response => {
+    if(query.length >= -1) {
+      setPage(page);
+      console.log('searching Vehicles', query)
+      try {
+        const response = await axios.get(`https://swapi.dev/api/vehicles?search=${query}&page=${page}`)
+        console.log(response.data.results)
         setResults(response.data.results);
         setTotalPages(Math.ceil(response.data.count / 10));
         setSearched(true);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error(error);
-      });
+      }
+      console.log(page)
+      console.log(query.length)
+    }
   }, [query, page]);
   
-  
   useEffect(() => {
-    handleSearch();
-  }, [handleSearch, page]);
-
+    if(searchClicked) handleSearch();
+  }, [handleSearch, page, searchClicked]);
+  
+  
   return (
     <Container>
       <Row className='banner'>
@@ -49,7 +55,7 @@ const VehicleSearch = () => {
       </Row>
       <Row>
         <Col xs={12} md={4} className='w-100'>
-          <form className='search' onSubmit={event => handleSearch(event)}>
+        <form className='search' onSubmit={event => {event.preventDefault();setSearchClicked(true)}}>
             <div className='box'>
               <input
                 type="text"
@@ -57,7 +63,7 @@ const VehicleSearch = () => {
                 placeholder='Search Vehicles'
                 className='input w-75'
                 value={query}
-                onChange={event => setQuery(event.target.value)}
+                onChange={event => {setQuery(event.target.value);setPage(1)} }
               />
               <button type="submit" className="button w-25">
                 <FontAwesomeIcon icon={faSearch} />
@@ -73,6 +79,6 @@ const VehicleSearch = () => {
       )}
     </Container>
   );
-}
+};
 
-export default VehicleSearch;
+  export default VehicleSearch;

@@ -12,36 +12,42 @@ import banner from '../images/SwapiBanner.png'
 //external components
 import NoResults from '../results/NoResults';
 import Pagination from '../results/Pagination';
-import StarshipResults from '../results/StarshipResults';
+import SpeciesResults from '../results/SpeciesResults';
 
-const StarshipSearch = () => {
+const SpeciesSearch = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
   const [searched, setSearched] = useState(false);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(null);
+  const [searchClicked, setSearchClicked] = useState(false);
 
-  const handleSearch = useCallback((event) => {
+  const handleSearch = useCallback(async (event) => {
     if (event) {
       event.preventDefault();
     }
-    setPage(page);
-    axios.get(`https://swapi.dev/api/starships?search=${query}&page=${page}`)
-      .then(response => {
+    if(query.length >= -1) {
+      setPage(page);
+      console.log('searching Species', query)
+      try {
+        const response = await axios.get(`https://swapi.dev/api/species?search=${query}&page=${page}`)
+        console.log(response.data.results)
         setResults(response.data.results);
         setTotalPages(Math.ceil(response.data.count / 10));
         setSearched(true);
-      })
-      .catch(error => {
+      } catch (error) {
         console.error(error);
-      });
+      }
+      console.log(page)
+      console.log(query.length)
+    }
   }, [query, page]);
   
-
   useEffect(() => {
-    handleSearch();
-  }, [handleSearch, page]);
-
+    if(searchClicked) handleSearch();
+  }, [handleSearch, page, searchClicked]);
+  
+  
   return (
     <Container>
       <Row className='banner'>
@@ -49,15 +55,15 @@ const StarshipSearch = () => {
       </Row>
       <Row>
         <Col xs={12} md={4} className='w-100'>
-          <form className='search' onSubmit={event => handleSearch(event)}>
+        <form className='search' onSubmit={event => {event.preventDefault();setSearchClicked(true)}}>
             <div className='box'>
               <input
                 type="text"
                 id="query"
-                placeholder='Search Starships'
+                placeholder='Search Species'
                 className='input w-75'
                 value={query}
-                onChange={event => setQuery(event.target.value)}
+                onChange={event => {setQuery(event.target.value);setPage(1)} }
               />
               <button type="submit" className="button w-25">
                 <FontAwesomeIcon icon={faSearch} />
@@ -66,7 +72,7 @@ const StarshipSearch = () => {
           </form>
         </Col>
       </Row>
-      {searched && results && <StarshipResults results={results} />}
+      {searched && results && <SpeciesResults results={results} />}
       {searched && !results.length && <NoResults results={results}/>}
       {searched && results && totalPages > 1 && (
         <Pagination handleSearch={handleSearch} page={page} setPage={setPage} totalPages={totalPages}/>
@@ -75,4 +81,4 @@ const StarshipSearch = () => {
   );
 };
 
-export default StarshipSearch;
+  export default SpeciesSearch;
